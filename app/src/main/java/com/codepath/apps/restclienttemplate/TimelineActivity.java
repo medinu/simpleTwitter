@@ -5,9 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -73,6 +77,24 @@ public class TimelineActivity extends AppCompatActivity {
         // find the recycler view
         // innit the list of tweets and adapter
         // recycler view setup: layout manager and the adapter
+    }
+
+    // Inflate the menu; this adds items to the action bar if it is present.
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.compose){
+            Intent i = new Intent(this, ComposeActivity.class);
+            startActivity(i);
+        }
+
+
+        return true;
     }
 
     private void loadMoreData(){
